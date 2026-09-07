@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.idea/
+.DS_Store
+
+# 本地配置：真实语料路径不进公开仓库（课程笔记属个人/课程材料）
+config.local.json
+
+# 索引产物（可由语料重建）
+index_store/

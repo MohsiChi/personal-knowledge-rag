@@ -1,0 +1,11 @@
+# query 清单示例。一行一条，# 开头为注释。
+# 两种格式：
+#   纯查询文本                  -> 自动编号 q001...，type=unknown
+#   id<TAB>type<TAB>查询文本    -> 用你自己的 id 与类型
+# type 建议：factual（找具体事实）/ conceptual（理解概念）/ relational（关系与取舍）/ research（开放问题）
+#
+# 写 query 的原则：写你复习时**真的会问**的问题，不要为了凑数编。
+# 编出来的 query 分布是假的，评测结论也就没有意义。
+q001	conceptual	什么是 amortized analysis，为什么要用势能法
+q002	factual	CS61B 的 Proj2B 做什么
+q003	relational	B+ 树和哈希表在数据库索引里怎么取舍

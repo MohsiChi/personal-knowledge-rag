@@ -1,0 +1,5 @@
+# 核心依赖：装这些就能跑测试、跑 hash 档 demo、跑评测框架
+numpy>=1.26
+rank-bm25>=0.2.2
+PyYAML>=6.0
+pytest>=8.0

@@ -1,0 +1,3 @@
+# 真实 embedding 才需要装（本地 ONNX 推理，不调外部 API、不需要 key、不产生费用）
+# 首次运行会从 HuggingFace 下载模型（约 100MB）；网络不通时设 HF_ENDPOINT=https://hf-mirror.com
+fastembed>=0.3.0

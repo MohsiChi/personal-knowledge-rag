@@ -1,0 +1,73 @@
+{
+  "_purpose": "SMOKE 集：只用于验证评测管线本身能跑通、指标算得对，不代表检索质量结论。",
+  "_caveat": "标注对象是仓库自带的合成示例语料（sample_wiki），由代码作者按内容判定。真实评测集必须由语料主人对自己的笔记标注，见 evaluation/label.py。",
+  "_known_issue": "q005 即使在真实语义模型下也召回不佳（见 _labeling_correction 的根因分析）。这是刻意保留的真实失败案例，不去修改示例语料来掩盖它——它正好说明：页面标题与正文的术语语言不一致时，词法与语义两路都会漏。",
+  "k": 5,
+  "items": [
+    {
+      "id": "q001",
+      "query": "BM25 的词频饱和是什么意思",
+      "query_type": "conceptual",
+      "relevant": [
+        "sample::wiki/concepts/bm25.md::1"
+      ],
+      "partial": [
+        "sample::wiki/concepts/bm25.md::0",
+        "sample::wiki/concepts/bm25.md::4"
+      ]
+    },
+    {
+      "id": "q002",
+      "query": "为什么 RRF 用排名而不是分数",
+      "query_type": "relational",
+      "relevant": [
+        "sample::wiki/concepts/reciprocal-rank-fusion.md::1"
+      ],
+      "partial": [
+        "sample::wiki/concepts/reciprocal-rank-fusion.md::0",
+        "sample::wiki/concepts/reciprocal-rank-fusion.md::2"
+      ]
+    },
+    {
+      "id": "q003",
+      "query": "稠密检索不擅长处理什么",
+      "query_type": "conceptual",
+      "relevant": [
+        "sample::wiki/concepts/dense-retrieval.md::3"
+      ],
+      "partial": [
+        "sample::wiki/concepts/dense-retrieval.md::0"
+      ]
+    },
+    {
+      "id": "q004",
+      "query": "什么时候才真的需要 ANN 索引",
+      "query_type": "research",
+      "relevant": [
+        "sample::wiki/questions/when-to-use-ann.md::1",
+        "sample::wiki/questions/when-to-use-ann.md::3"
+      ],
+      "partial": [
+        "sample::wiki/questions/when-to-use-ann.md::0",
+        "sample::wiki/questions/when-to-use-ann.md::2"
+      ]
+    },
+    {
+      "id": "q005",
+      "query": "稀疏检索和稠密检索应该怎么取舍",
+      "query_type": "relational",
+      "relevant": [
+        "sample::wiki/connections/sparse-vs-dense.md::2",
+        "sample::wiki/connections/sparse-vs-dense.md::3"
+      ],
+      "partial": [
+        "sample::wiki/connections/sparse-vs-dense.md::1",
+        "sample::wiki/concepts/bm25.md::2",
+        "sample::wiki/concepts/dense-retrieval.md::2",
+        "sample::wiki/connections/sparse-vs-dense.md::0",
+        "sample::wiki/concepts/dense-retrieval.md::1"
+      ]
+    }
+  ],
+  "_labeling_correction": "2026-09-06 事后补正（诚实留痕）：首次评测 q005 三种 mode 全部 0 分，诊断发现 dense-retrieval.md::1（标题即『与稀疏检索的根本区别』）在两路都排第 1、sparse-vs-dense.md::0（该页标题段）进了 hybrid top5，但两者都未被标注，属标注漏项而非纯检索失败。已补为 partial。**注意：这是在看到检索结果之后修改标注，此类操作可以被用来刷分，因此必须留痕。**在真实语料上标注时应尽量盲标（只看 chunk 内容，不看 routes 列），任何事后补正都要像本条一样写明理由与时间。补正后 q005 仍存在真实检索弱点：最切题的 sparse-vs-dense.md::2/::3 在 dense 路排 11/22 名、sparse 路排 12 名或未召回，根因是该页正文用英文术语 BM25/Dense、标题不含中文『稀疏/稠密』。"
+}

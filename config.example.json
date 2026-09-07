@@ -1,0 +1,13 @@
+{
+  "_comment": "复制为 config.local.json 并填入你自己的 wiki 路径；config.local.json 已被 gitignore，不会进公开仓库。",
+  "wiki_roots": [
+    { "name": "sample", "path": "sample_wiki" }
+  ],
+  "embedder": "hash",
+  "embed_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "top_k": 5,
+  "recall_k": 50,
+  "rrf_k": 60,
+  "exclude_status": ["stub"],
+  "exclude_layers": ["index"]
+}
